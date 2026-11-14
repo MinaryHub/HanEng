@@ -17,6 +17,20 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+
+      # 태그와 Cargo.toml 버전이 다르면 패키징하지 않는다. v0.9.1은 버전을
+      # 올리지 않은 채 태그만 붙어 앱이 자신을 0.9.0으로 알았고, 업데이트
+      # 알림이 끝없이 반복됐다(MSI도 같은 버전이라 업그레이드되지 않음).
+      - name: Tag must match Cargo.toml version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}".TrimStart('v')
+          $ver = (Select-String -Path Cargo.toml -Pattern '^version = "(.+)"')[0].Matches.Groups[1].Value
+          if ($tag -ne $ver) {
+            Write-Error "Tag v$tag does not match Cargo.toml version $ver - run scripts/release.sh <version> instead of tagging by hand."
+            exit 1
+          }
+
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
 

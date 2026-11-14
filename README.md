@@ -27,7 +27,7 @@ haneng은 **입력 카렛(입력 커서) 옆에 현재 입력 상태 배지**를
 
 ## 설치
 
-**[📦 최신 릴리스 다운로드](https://github.com/knoxxr/haneng/releases/latest)**
+**[📦 최신 릴리스 다운로드](https://github.com/MinaryHub/HanEng/releases/latest)**
 
 | OS | 파일 | 참고 |
 |---|---|---|

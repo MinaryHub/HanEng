@@ -9,7 +9,7 @@
 //!   msiexec을 띄우고 즉시 종료한다.
 //! - 설치(macOS/Linux): 릴리스 페이지를 브라우저로 연다.
 
-pub const REPO: &str = "knoxxr/haneng";
+pub const REPO: &str = "MinaryHub/HanEng";
 pub const CURRENT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// 타임아웃과 TLS 프로바이더를 명시한 에이전트.
